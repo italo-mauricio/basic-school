@@ -2,8 +2,8 @@ from django.db import models
 
 class Base(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    update = models.DateTimeField(auto_now=True)
-    active = models.DateTimeField(default=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
 
     class Meta:
         abstract = True
@@ -12,7 +12,7 @@ class Course(Base):
     tittle = models.CharField(max_length=255)
     url = models.URLField(unique=True)
 
-    class Meta():
+    class Meta:
         verbose_name = 'Course'
         verbose_name_plural = 'Courses'
 
@@ -20,7 +20,7 @@ class Course(Base):
         return self.tittle
 
 
-class Avaliable():
+class Avaliable(Base):
     course = models.ForeignKey(Course, related_name='avaliables', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     email = models.EmailField()
