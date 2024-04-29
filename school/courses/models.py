@@ -33,5 +33,5 @@ class Avaliable(Base):
         unique_together = ['email', 'course']
 
     def __str__(self):
-        return f'{self.name} is available for the course {self.course} with a grade of {self.avaliable  }'
+        return f'{self.name} is available for the course {self.course} with a grade of {self.avaliable}'
 
